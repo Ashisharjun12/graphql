@@ -1,5 +1,4 @@
-import { db } from "../../config/database.js";
-import { users } from "../../models/user.js";
+import UserService from "../../services/user.js";
 
 const queries = {
 
@@ -8,7 +7,7 @@ const queries = {
 
 const mutations = {
     createUser: async (_, { name, email, password }) => {
-        const user = await db.insert(users).values({ name, email, password });
+        const user = await UserService.createUser(name, email, password);
         return user;
     }
 
