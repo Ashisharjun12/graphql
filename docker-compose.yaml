@@ -1,0 +1,21 @@
+services:
+ # captain-db
+  graphql-server:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/graphql-server:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    environment:
+
+      - POSTGRES_DB=graphql_server
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
